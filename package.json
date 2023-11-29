@@ -1,0 +1,16 @@
+{
+  "name": "spotify-dash",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend",
+    "packages/*"
+  ],
+  "scripts": {
+    "start:backend": "yarn --cwd backend dev",
+    "start:frontend": "yarn --cwd frontend start"
+  }
+}

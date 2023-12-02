@@ -1,9 +1,9 @@
 import { Router } from "express";
+import SpotifyController from "../controllers/spotifyController";
 
 const routes = Router();
 
-routes.get("/", (req, res) => {
-  return res.json({ message: "Hello World" });
-});
+routes.get("/login", SpotifyController.redirectToCallbackUrl);
+routes.get("/callback", SpotifyController.handleCallback);
 
 export { routes };

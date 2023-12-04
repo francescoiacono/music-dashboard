@@ -1,6 +1,6 @@
 import { UserProfile } from "@spotify-dash/types";
 import { createContext, useContext, useEffect, useState } from "react";
-import { authService, userService } from "../../services";
+import { resourcesService } from "../../services";
 
 interface AuthContextProps {
   user: UserProfile | null;
@@ -41,9 +41,14 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const fetchUserProfile = async () => {
       setIsLoading(true);
       try {
-        const authenticated = await authService.isAuthenticated();
+        const authenticated = await resourcesService.fetchResource<boolean>(
+          "/auth/authorized"
+        );
+
         if (authenticated) {
-          const user = await userService.fetchCurrentUser();
+          const user = await resourcesService.fetchResource<UserProfile>(
+            "/user/me"
+          );
           setUserProfile(user);
         }
       } catch (err) {

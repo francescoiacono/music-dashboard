@@ -38,7 +38,7 @@ class ArtistsController {
         accessToken,
         options
       );
-      res.status(200).json({ artists });
+      res.status(200).json(artists);
     } catch (error) {
       next(error);
     }

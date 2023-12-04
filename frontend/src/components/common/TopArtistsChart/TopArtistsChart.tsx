@@ -1,35 +1,13 @@
-import { useEffect, useState } from "react";
-import { artistsService } from "../../../services";
-import { Artist } from "@spotify-dash/types";
+import { useEffect } from "react";
 import { ChartItem } from "./ChartItem/ChartItem";
+import { useArtists } from "../../../hooks";
 
 export const TopArtistsChart = () => {
-  const [artists, setArtists] = useState<Artist[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-
-  const fetchArtists = async () => {
-    try {
-      setLoading(true);
-      const options = {
-        time_range: "long_term",
-        limit: 10,
-        offset: 0,
-      };
-      const artists = await artistsService.fetchTopArtists(options);
-      setArtists(artists);
-    } catch (error) {
-      setError(error as Error["message"]);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const { artists, loading, error, fetchArtists } = useArtists();
 
   useEffect(() => {
     fetchArtists();
   }, []);
-
-  useEffect(() => {}, [artists]);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;

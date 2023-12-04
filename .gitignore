@@ -19,7 +19,6 @@ node_modules/
 /frontend/build/
 /frontend/.cache/
 /frontend/coverage/
-/frontend/public/
 
 # Dependency directories
 **/node_modules/

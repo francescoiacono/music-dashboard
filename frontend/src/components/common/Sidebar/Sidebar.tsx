@@ -23,6 +23,9 @@ export const Sidebar = React.memo(() => {
           <li>
             <a href="/top-artists">Top Artists</a>
           </li>
+          <li>
+            <a href="/top-tracks">Top Tracks</a>
+          </li>
         </ul>
       </nav>
     </aside>

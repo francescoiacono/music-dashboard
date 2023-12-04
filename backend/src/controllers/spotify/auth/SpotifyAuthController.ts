@@ -170,7 +170,7 @@ class SpotifyAuthController {
 
   public isAuthorized = (req: Request, res: Response) => {
     const authorized = Boolean(req.session.accessToken);
-    res.send({ authorized });
+    res.send(authorized);
   };
 }
 

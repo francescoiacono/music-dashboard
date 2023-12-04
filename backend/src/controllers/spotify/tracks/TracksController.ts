@@ -1,6 +1,6 @@
-import { Track } from "@spotify-dash/types";
-import { Request, Response, NextFunction } from "express";
-import { TracksService } from "../../../services";
+import { Track } from '@spotify-dash/types';
+import { Request, Response, NextFunction } from 'express';
+import { TracksService } from '../../../services';
 
 class TracksController {
   public getTopTracks = async (
@@ -14,7 +14,7 @@ class TracksController {
       const options = {
         limit: limit ? Number(limit) : 20,
         offset: offset ? Number(offset) : 0,
-        time_range: time_range ? String(time_range) : "medium_term",
+        time_range: time_range ? String(time_range) : 'medium_term',
       };
 
       const { accessToken } = req.session;
@@ -23,7 +23,7 @@ class TracksController {
         options
       );
 
-      res.status(200).json({ tracks });
+      res.status(200).json(tracks);
     } catch (error) {
       next(error);
     }

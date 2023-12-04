@@ -1,10 +1,12 @@
-import { TopTracksChart } from "../../components/common";
-import { SidebarLayout } from "../../components/layouts";
+import { TopTracksChart } from '../../components/common';
+import { SidebarLayout } from '../../components/layouts';
+
+// TODO: Fix Chart Item stuff
 
 export const TopTracksPage = () => {
   return (
     <SidebarLayout>
-      Top Tracks Page
+      <h2>Top Tracks Page</h2>
       <TopTracksChart />
     </SidebarLayout>
   );

@@ -9,8 +9,8 @@ class UserController {
   ) => {
     try {
       const { accessToken } = req.session;
-      const response = await UserService.fetchUserProfile(accessToken);
-      res.status(200).json(response.data);
+      const profile = await UserService.fetchUserProfile(accessToken);
+      res.status(200).json(profile);
     } catch (error) {
       next(error);
     }

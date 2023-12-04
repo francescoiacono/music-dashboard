@@ -1,10 +1,28 @@
+import { useEffect, useState } from "react";
 import { Link } from "./components/common/Link/Link";
 
 function App() {
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const checkIfAuthorized = async () => {
+      const response = await fetch("http://localhost:8000/authorized", {
+        credentials: "include",
+      });
+      const content = await response.json();
+      setLoggedIn(content.authorized);
+    };
+
+    checkIfAuthorized();
+  }, []);
   return (
     <main>
       Hello World!
-      <Link to="http://localhost:8000/login">Login!</Link>
+      {!loggedIn ? (
+        <Link to="http://localhost:8000/login">Login!</Link>
+      ) : (
+        <p>You're logged in!</p>
+      )}
     </main>
   );
 }

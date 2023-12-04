@@ -36,6 +36,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [error, setError] = useState<string>("");
 
   useEffect(() => {
+    if (user) return;
+
     const fetchUserProfile = async () => {
       setIsLoading(true);
       try {
@@ -52,7 +54,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     };
 
     fetchUserProfile();
-  }, []);
+  }, [user]);
 
   return (
     <AuthContext.Provider value={{ user, isLoading, error }}>

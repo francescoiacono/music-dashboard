@@ -1,9 +1,10 @@
+import React from "react";
 import { useAuth } from "../../../providers";
 import { UserInformation } from "./UserInformation";
-import classes from "./Sidebar.module.scss";
 import { LoginButton } from "../LoginButton/LoginButton";
+import classes from "./Sidebar.module.scss";
 
-export const Sidebar = () => {
+export const Sidebar = React.memo(() => {
   const { user } = useAuth();
 
   return (
@@ -16,8 +17,14 @@ export const Sidebar = () => {
               <LoginButton />
             </li>
           )}
+          <li>
+            <a href="/">Dashboard</a>
+          </li>
+          <li>
+            <a href="/top-artists">Top Artists</a>
+          </li>
         </ul>
       </nav>
     </aside>
   );
-};
+});

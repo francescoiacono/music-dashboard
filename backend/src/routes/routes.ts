@@ -1,15 +1,15 @@
 import { Router } from "express";
-import SpotifyController from "../controllers/spotifyController";
+import { SpotifyAuthController } from "../controllers";
 
 const routes = Router();
 
-routes.get("/login", SpotifyController.redirectToCallbackUrl);
-routes.get("/callback", SpotifyController.handleCallback);
-routes.get("/refresh", SpotifyController.refreshAccessToken);
+routes.get("/login", SpotifyAuthController.redirectToCallbackUrl);
+routes.get("/callback", SpotifyAuthController.handleCallback);
+routes.get("/refresh", SpotifyAuthController.refreshAccessToken);
 routes.get(
   "/authorized",
-  SpotifyController.checkAccessToken,
-  SpotifyController.isAuthorized
+  SpotifyAuthController.checkAccessToken,
+  SpotifyAuthController.isAuthorized
 );
 
 export { routes };

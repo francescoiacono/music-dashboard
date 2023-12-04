@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
-import { ErrorUtils, SessionUtils, SpotifyUtils } from "../utils";
-import { SPOTIFY_CONFIG } from "../config";
-import { SpotifyService } from "../services";
+import { SessionUtils, SpotifyUtils } from "../../utils";
+import { SPOTIFY_CONFIG } from "../../config";
+import { SpotifyService } from "../../services";
 
 /**
  * Controller class for handling Spotify related requests.
@@ -14,7 +14,7 @@ import { SpotifyService } from "../services";
  * @method handleCallback
  */
 
-class SpotifyController {
+class SpotifyAuthController {
   constructor(
     private readonly clientId: string = SPOTIFY_CONFIG.clientId,
     private readonly redirectUri: string = SPOTIFY_CONFIG.redirectUri
@@ -149,4 +149,4 @@ class SpotifyController {
   };
 }
 
-export default new SpotifyController();
+export default new SpotifyAuthController();

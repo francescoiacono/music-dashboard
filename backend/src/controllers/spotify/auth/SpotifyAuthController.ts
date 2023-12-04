@@ -134,6 +134,26 @@ class SpotifyAuthController {
   };
 
   /**
+   * Logs the user out.
+   * This function destroys the session variables and redirects the user to the
+   * client origin.
+   *
+   * @param {Request} req - The Express request object.
+   * @param {Response} res - The Express response object.
+   */
+
+  public logout = (req: Request, res: Response) => {
+    req.session.destroy((error) => {
+      if (error) {
+        console.error("Session destruction error:", error);
+        return res.status(500).send("Error logging out");
+      }
+
+      res.redirect(`${SPOTIFY_CONFIG.clientOrigin}?logout=success`);
+    });
+  };
+
+  /**
    * Checks if the user is authorized.
    * This function checks if the user is authorized by checking if the access
    * token is present in the session variables.

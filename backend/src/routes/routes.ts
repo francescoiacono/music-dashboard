@@ -6,6 +6,7 @@ const routes = Router();
 routes.get("/login", SpotifyAuthController.redirectToCallbackUrl);
 routes.get("/callback", SpotifyAuthController.handleCallback);
 routes.get("/refresh", SpotifyAuthController.refreshAccessToken);
+routes.get("/logout", SpotifyAuthController.logout);
 routes.get(
   "/authorized",
   SpotifyAuthController.checkAccessToken,

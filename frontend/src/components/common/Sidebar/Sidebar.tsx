@@ -1,12 +1,13 @@
 import { useAuth } from "../../../providers";
 import { Link } from "../Link/Link";
 import { UserInformation } from "./UserInformation";
+import classes from "./Sidebar.module.scss";
 
 export const Sidebar = () => {
   const { user } = useAuth();
 
   return (
-    <aside>
+    <aside className={classes.wrapper}>
       {user && <UserInformation profile={user} />}
       <nav>
         <ul>

@@ -1,0 +1,10 @@
+$sidebar-width: 250px;
+$sidebar-height: 100vh;
+$sidebar-bg-color: #dddddd;
+
+.wrapper {
+    width: $sidebar-width;
+    height: $sidebar-height;
+    position: fixed;
+    background-color: $sidebar-bg-color;
+}

@@ -1,8 +1,9 @@
 import { Request, Response, NextFunction } from "express";
 import { ArtistsService } from "../../../services";
+import { Artist } from "@spotify-dash/types";
 
 /**
- * ArtistsController class handles the logic for the /artists route.
+ * ArtistsController class handles the logic for the "/artists"SS route.
  *
  * @class ArtistsController
  * @method getTopArtists
@@ -33,8 +34,11 @@ class ArtistsController {
       };
 
       const { accessToken } = req.session;
-      const data = await ArtistsService.fetchTopArtists(accessToken, options);
-      res.status(200).json({ data });
+      const artists: Artist[] = await ArtistsService.fetchTopArtists(
+        accessToken,
+        options
+      );
+      res.status(200).json({ artists });
     } catch (error) {
       next(error);
     }

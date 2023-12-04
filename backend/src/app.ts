@@ -2,7 +2,7 @@ import express, { Application, Request, Response, NextFunction } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import session from "express-session";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import { routes } from "./routes";
 
 dotenv.config();
@@ -93,19 +93,3 @@ class App {
 }
 
 export default new App().server;
-
-/**
- * Extends the Express session data.
- *
- * This interface extends the Express session data to include the access token,
- * refresh token, and token expiry. This allows the session data to be used
- * throughout the application.
- *
- */
-declare module "express-session" {
-  export interface SessionData {
-    accessToken?: string;
-    refreshToken?: string;
-    tokenExpiry?: number;
-  }
-}

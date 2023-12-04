@@ -1,0 +1,13 @@
+.logoutButton {
+    border-radius: 5px;
+    color: #000;
+    margin: .5rem 0;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    font-size: .8rem;
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}

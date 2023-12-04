@@ -1,7 +1,7 @@
 import { useAuth } from "../../../providers";
-import { Link } from "../Link/Link";
 import { UserInformation } from "./UserInformation";
 import classes from "./Sidebar.module.scss";
+import { LoginButton } from "../LoginButton/LoginButton";
 
 export const Sidebar = () => {
   const { user } = useAuth();
@@ -11,13 +11,9 @@ export const Sidebar = () => {
       {user && <UserInformation profile={user} />}
       <nav>
         <ul>
-          {!user ? (
+          {!user && (
             <li>
-              <Link to="http://localhost:8000/api/auth/login">Login</Link>
-            </li>
-          ) : (
-            <li>
-              <Link to="http://localhost:8000/api/auth/logout">Logout</Link>
+              <LoginButton />
             </li>
           )}
         </ul>

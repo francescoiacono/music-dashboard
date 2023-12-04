@@ -1,2 +1,3 @@
 export * from "./Sidebar/Sidebar";
-export * from "./Link/Link";
+export * from "./LoginButton/LoginButton";
+export * from "./LogoutButton/LogoutButton";

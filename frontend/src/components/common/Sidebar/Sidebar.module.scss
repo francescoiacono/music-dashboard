@@ -7,4 +7,12 @@ $sidebar-bg-color: #dddddd;
     height: $sidebar-height;
     position: fixed;
     background-color: $sidebar-bg-color;
+
+    & > ul {
+        width: 100%;
+    }
+
+    & > ul > li {
+        width: 100%;
+    }
 }

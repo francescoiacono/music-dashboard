@@ -12,6 +12,11 @@ import { AuthService } from "../../../services";
  * @class SpotifyController
  * @method redirectToCallbackUrl
  * @method handleCallback
+ * @method refreshAccessToken
+ * @method checkAccessToken
+ * @method logout
+ * @method isAuthorized
+ *
  */
 
 class SpotifyAuthController {

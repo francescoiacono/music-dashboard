@@ -3,7 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import session from "express-session";
 import axios from "axios";
-import { routes } from "./routes";
+import { authRoutes, userRoutes } from "./routes";
 
 dotenv.config();
 
@@ -54,12 +54,13 @@ class App {
   /**
    * Sets up the Express server routes.
    * This function sets up the Express server to use the routes defined in
-   * backend/src/routes.ts.
+   * backend/src/routes/${route}/index.ts.
    *
    */
 
   private routes(): void {
-    this.server.use(routes);
+    this.server.use("/api/auth", authRoutes.routes);
+    this.server.use("/api/user", userRoutes.routes);
   }
 
   /**

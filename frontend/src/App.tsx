@@ -6,9 +6,12 @@ function App() {
 
   useEffect(() => {
     const checkIfAuthorized = async () => {
-      const response = await fetch("http://localhost:8000/authorized", {
-        credentials: "include",
-      });
+      const response = await fetch(
+        "http://localhost:8000/api/auth/authorized",
+        {
+          credentials: "include",
+        }
+      );
       const content = await response.json();
       setLoggedIn(content.authorized);
     };
@@ -19,7 +22,7 @@ function App() {
     <main>
       Hello World!
       {!loggedIn ? (
-        <Link to="http://localhost:8000/login">Login!</Link>
+        <Link to="http://localhost:8000/api/auth/login">Login!</Link>
       ) : (
         <p>You're logged in!</p>
       )}

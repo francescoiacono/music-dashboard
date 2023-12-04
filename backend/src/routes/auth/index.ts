@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { SpotifyAuthController, UserController } from "../controllers";
+import { SpotifyAuthController } from "../../controllers";
 
 const routes = Router();
 
@@ -11,12 +11,6 @@ routes.get(
   "/authorized",
   SpotifyAuthController.checkAccessToken,
   SpotifyAuthController.isAuthorized
-);
-
-routes.get(
-  "/user",
-  SpotifyAuthController.checkAccessToken,
-  UserController.fetchUserProfile
 );
 
 export { routes };

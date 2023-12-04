@@ -1,18 +1,16 @@
-import { useAuth } from "../../../hooks";
+import { useAuth } from "../../../providers";
 import { Link } from "../Link/Link";
 import { UserInformation } from "./UserInformation";
 
 export const Sidebar = () => {
-  const { isAuthenticated, userProfile } = useAuth();
+  const { user } = useAuth();
 
   return (
     <aside>
-      {isAuthenticated && userProfile && (
-        <UserInformation profile={userProfile} />
-      )}
+      {user && <UserInformation profile={user} />}
       <nav>
         <ul>
-          {!isAuthenticated ? (
+          {!user ? (
             <li>
               <Link to="http://localhost:8000/api/auth/login">Login</Link>
             </li>

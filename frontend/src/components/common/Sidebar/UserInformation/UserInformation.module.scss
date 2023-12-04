@@ -1,4 +1,5 @@
 $avatar-size: 70px;
+$border-radius: 18px;
 
 .wrapper {
     width: 100%;
@@ -15,8 +16,7 @@ $avatar-size: 70px;
     & > img {
         width: $avatar-size;
         height: $avatar-size;
-        border-radius: 100%;
-
+        border-radius: $border-radius;
         object-fit: cover;
 
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);

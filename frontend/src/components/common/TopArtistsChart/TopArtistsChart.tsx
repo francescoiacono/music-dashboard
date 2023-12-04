@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { artistsService } from "../../../services";
 import { Artist } from "@spotify-dash/types";
+import { ChartItem } from "./ChartItem/ChartItem";
 
 export const TopArtistsChart = () => {
   const [artists, setArtists] = useState<Artist[]>([]);
@@ -33,5 +34,10 @@ export const TopArtistsChart = () => {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
 
-  return <ol>{artists.length > 0 && artists.map((m) => <li>{m.name}</li>)}</ol>;
+  return (
+    <ol>
+      {artists.length > 0 &&
+        artists.map((artist) => <ChartItem key={artist.id} artist={artist} />)}
+    </ol>
+  );
 };

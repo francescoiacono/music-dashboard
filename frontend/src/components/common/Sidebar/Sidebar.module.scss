@@ -1,13 +1,13 @@
-$sidebar-width: 250px;
+$sidebar-width: var(--sidebar-width);
 $sidebar-height: 100vh;
-$sidebar-bg-color: #dddddd;
+$sidebar-bg-color: #f1f1f1;
 
 .wrapper {
     width: $sidebar-width;
     height: $sidebar-height;
     position: fixed;
     background-color: $sidebar-bg-color;
-
+r
     & > ul {
         width: 100%;
     }

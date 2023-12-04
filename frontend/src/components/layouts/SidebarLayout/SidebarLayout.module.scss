@@ -1,0 +1,9 @@
+.wrapper {
+    display: flex;
+}
+
+.wrapper > main {    
+    margin-left: var(--sidebar-width); 
+    flex-grow: 1; 
+    padding: 20px;
+}

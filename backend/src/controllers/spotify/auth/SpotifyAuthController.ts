@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
-import { SessionUtils, SpotifyUtils } from "../../utils";
-import { SPOTIFY_CONFIG } from "../../config";
-import { SpotifyService } from "../../services";
+import { SessionUtils, SpotifyUtils } from "../../../utils";
+import { SPOTIFY_CONFIG } from "../../../config";
+import { AuthService } from "../../../services";
 
 /**
  * Controller class for handling Spotify related requests.
@@ -65,7 +65,7 @@ class SpotifyAuthController {
     try {
       const { code, state } = req.query;
       SpotifyUtils.validateCallbackRequest(state as string);
-      const response = await SpotifyService.requestSpotifyToken(code as string);
+      const response = await AuthService.requestSpotifyToken(code as string);
       const { access_token, refresh_token } = response.data;
       SessionUtils.setSessionVariables(
         req.session,
@@ -96,7 +96,7 @@ class SpotifyAuthController {
   ) => {
     try {
       const { refreshToken } = req.session;
-      const response = await SpotifyService.requestNewAccessToken(refreshToken);
+      const response = await AuthService.requestNewAccessToken(refreshToken);
       const { access_token } = response.data;
       SessionUtils.setSessionVariables(req.session, access_token, refreshToken);
       res.send({ access_token });

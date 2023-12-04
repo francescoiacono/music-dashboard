@@ -1,6 +1,6 @@
 import axios from "axios";
-import { SPOTIFY_CONFIG } from "../../config";
-import { StringUtils } from "../../utils";
+import { SPOTIFY_CONFIG } from "../../../config";
+import { StringUtils } from "../../../utils";
 
 /**
  * Requests an access token from Spotify's API.

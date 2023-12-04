@@ -3,7 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import session from "express-session";
 import axios from "axios";
-import { authRoutes, userRoutes, artistsRoutes } from "./routes";
+import { authRoutes, userRoutes, artistsRoutes, tracksRoutes } from "./routes";
 
 dotenv.config();
 
@@ -62,6 +62,7 @@ class App {
     this.server.use("/api/auth", authRoutes.routes);
     this.server.use("/api/user", userRoutes.routes);
     this.server.use("/api/artists", artistsRoutes.routes);
+    this.server.use("/api/tracks", tracksRoutes.routes);
   }
 
   /**

@@ -1,11 +1,5 @@
 import axios from "axios";
-import { Artist } from "@spotify-dash/types";
-
-interface RequestOptions {
-  limit: number;
-  offset: number;
-  time_range: string;
-}
+import { Artist, RequestOptions } from "@spotify-dash/types";
 
 /**
  * Fetches the user's top artists from Spotify.

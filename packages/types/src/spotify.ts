@@ -935,6 +935,7 @@ export interface AudioFeatures {
   duration_ms: number;
   time_signature: number;
 }
+
 export interface AudioFeaturesCollection {
   audio_features: AudioFeatures[];
 }
@@ -1086,4 +1087,10 @@ export interface Queue {
   currently_playing: Track | Episode | null;
   queue: (Track | Episode)[];
 }
+export interface RequestOptions {
+  limit: number;
+  offset: number;
+  time_range: string;
+}
+
 export {};

@@ -1,9 +1,21 @@
-import { useEffect } from "react";
-import { ChartItem } from "./ChartItem/ChartItem";
-import { useArtists } from "../../../hooks";
+import { useEffect } from 'react';
+import { ChartItem } from './ChartItem/ChartItem';
+import { useApiResource } from '../../../hooks/useApiData';
+import { Artist, RequestOptions } from '@spotify-dash/types';
 
 export const TopArtistsChart = () => {
-  const { artists, loading, error, fetchArtists } = useArtists();
+  const options: RequestOptions = {
+    limit: 10,
+    time_range: 'long_term',
+    offset: 0,
+  };
+
+  const {
+    data: artists,
+    loading,
+    error,
+    fetchAll: fetchArtists,
+  } = useApiResource<Artist[]>('/artists/top', options);
 
   useEffect(() => {
     fetchArtists();
@@ -11,6 +23,7 @@ export const TopArtistsChart = () => {
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
+  if (!artists) return <div>No Artists</div>;
 
   return (
     <ol>

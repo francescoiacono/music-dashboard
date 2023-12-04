@@ -1,20 +1,35 @@
-import { RequestOptions } from "@spotify-dash/types";
-import apiFetch from "../../api";
+import { RequestOptions } from '@spotify-dash/types';
+import apiFetch from '../../api';
 
-export const x = 0;
+/**
+ * Fetches a single resource from the API
+ *
+ * @param url - The url to fetch the resource from
+ * @returns The resource
+ *
+ */
 
 export const fetchResource = async <T>(url: string): Promise<T> => {
   const response = await apiFetch(url, {
-    method: "GET",
-    credentials: "include",
+    method: 'GET',
+    credentials: 'include',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   });
 
   const data = await response.json();
   return data as T;
 };
+
+/**
+ * Fetches all resources from the API
+ *
+ * @param url - The url to fetch the resources from
+ * @param options - The options to pass to the API
+ * @returns an array of resources
+ *
+ */
 
 export const fetchAllResources = async <T>(
   url: string,
@@ -24,13 +39,13 @@ export const fetchAllResources = async <T>(
   const updatedUrl = `${url}?limit=${limit}&offset=${offset}&time_range=${time_range}`;
 
   const response = await apiFetch(updatedUrl, {
-    method: "GET",
-    credentials: "include",
+    method: 'GET',
+    credentials: 'include',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   });
 
-  const data = await response.json();
-  return data as T;
+  const data: T = await response.json();
+  return data;
 };

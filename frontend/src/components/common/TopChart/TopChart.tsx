@@ -21,10 +21,10 @@ export const TopChart: React.FC<TopChartProps> = ({ type }) => {
     loading,
     error,
     fetchAll: fetchData,
-  } = useApiResource<Track[] | Artist[]>(endpoint, options);
+  } = useApiResource<Track[] | Artist[]>(endpoint);
 
   useEffect(() => {
-    fetchData();
+    fetchData(options);
   }, []);
 
   if (loading) return <div>Loading...</div>;

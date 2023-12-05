@@ -20,6 +20,7 @@ $border-radius: 18px;
     width: $image-size;
     height: $image-size;
     border-radius: $border-radius;
+    object-fit: cover;
   }
 }
 

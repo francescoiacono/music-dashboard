@@ -27,3 +27,12 @@ export const capitalizeWords = (str: string): string => {
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join(' ');
 };
+
+export const parseIsoDate = (isoDate: string) => {
+  const date = new Date(isoDate);
+  return {
+    day: date.getDate(),
+    month: date.getMonth() + 1,
+    year: date.getFullYear(),
+  };
+};

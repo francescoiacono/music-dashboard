@@ -4,6 +4,7 @@ import { ArtistAlbums } from './ArtistAlbums/ArtistAlbums';
 import { useApiResource } from '../../../../hooks';
 import { stringUtils } from '../../../../utils';
 import classes from './ArtistInfo.module.scss';
+import { ColorBar } from '../../../../components/common';
 
 interface ArtistInfoProps {
   id: string;
@@ -40,7 +41,7 @@ export const ArtistInfo: React.FC<ArtistInfoProps> = ({ id }) => {
           </div>
           <div>
             <h3>Popularity</h3>
-            <p>{artist.popularity}</p>
+            <ColorBar value={artist.popularity} />
           </div>
 
           <div>

@@ -1,4 +1,4 @@
-$image-size: 150px;
+$image-size: 90px;
 $border-radius: 18px;
 
 .wrapper {
@@ -6,9 +6,32 @@ $border-radius: 18px;
   list-style-type: none;
   display: flex;
   gap: 1rem;
+  padding: 1rem;
+  border-radius: $border-radius;
+  transition: all 0.3s ease-in-out;
+  background-color: #ececec;
+
   & > img {
     width: $image-size;
     height: $image-size;
     border-radius: $border-radius;
+    object-fit: cover;
+  }
+
+  &:hover {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
+    transform: scale(1.02);
+  }
+
+  .albumInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .albumInfo > p {
+    font-size: 0.8rem;
+    color: #818181;
+    margin-top: 0.5rem;
   }
 }

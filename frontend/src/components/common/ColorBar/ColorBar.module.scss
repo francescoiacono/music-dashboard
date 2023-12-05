@@ -1,0 +1,26 @@
+.colorBar {
+  width: 100%;
+  background-color: #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+
+  margin: 5px 0;
+
+  max-width: 200px;
+}
+
+.colorBarFilled {
+  height: 20px;
+  border-radius: 8px;
+  background: linear-gradient(to right, red, green);
+  transition: width 0.3s ease-in-out;
+
+  & > p {
+    position: absolute;
+    top: 1.5px;
+    left: 40%;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+}

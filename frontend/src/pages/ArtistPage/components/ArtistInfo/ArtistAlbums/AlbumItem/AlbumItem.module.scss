@@ -1,0 +1,14 @@
+$image-size: 150px;
+$border-radius: 18px;
+
+.wrapper {
+  width: 400px;
+  list-style-type: none;
+  display: flex;
+  gap: 1rem;
+  & > img {
+    width: $image-size;
+    height: $image-size;
+    border-radius: $border-radius;
+  }
+}

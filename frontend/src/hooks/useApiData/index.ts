@@ -7,13 +7,16 @@ export const useApiResource = <T>(url: string) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const fetchAll = async (options: RequestOptions) => {
+  /**
+   * Fetches data from the API and sets the state accordingly.
+   *
+   * @param options - Options to pass to the API call.
+   */
+
+  const fetchData = async (options?: RequestOptions) => {
     setLoading(true);
     try {
-      const response = await resourcesService.fetchAllResources<T>(
-        url,
-        options
-      );
+      const response = await resourcesService.fetchResource<T>(url, options);
       setData(response);
     } catch (error) {
       setError(error as Error['message']);
@@ -22,17 +25,5 @@ export const useApiResource = <T>(url: string) => {
     }
   };
 
-  const fetchOne = async () => {
-    setLoading(true);
-    try {
-      const response = await resourcesService.fetchResource<T>(url);
-      setData(response);
-    } catch (error) {
-      setError(error as Error['message']);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  return { data, loading, error, fetchAll, fetchOne };
+  return { data, loading, error, fetchData };
 };

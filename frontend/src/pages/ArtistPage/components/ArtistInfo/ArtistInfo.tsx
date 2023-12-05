@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
-import { useApiResource } from '../../../../hooks';
 import { Artist } from '@spotify-dash/types';
+import { ArtistAlbums } from './ArtistAlbums/ArtistAlbums';
+import { useApiResource } from '../../../../hooks';
+import { stringUtils } from '../../../../utils';
+import classes from './ArtistInfo.module.scss';
 
 interface ArtistInfoProps {
   id: string;
@@ -11,7 +14,7 @@ export const ArtistInfo: React.FC<ArtistInfoProps> = ({ id }) => {
     data: artist,
     loading,
     error,
-    fetchOne: fetchArtist,
+    fetchData: fetchArtist,
   } = useApiResource<Artist>(`/artists/${id}`);
 
   useEffect(() => {
@@ -23,28 +26,31 @@ export const ArtistInfo: React.FC<ArtistInfoProps> = ({ id }) => {
   if (!artist) return <div>No artist</div>;
 
   return (
-    <div>
-      <div>
+    <div className={classes.wrapper}>
+      <div className={classes.artistInfo}>
         <img src={artist.images[0].url} alt={artist.name} />
-        <h1>{artist.name}</h1>
-      </div>
-      <div>
-        <h2>Genres</h2>
-        <ul>
-          {artist.genres.map((genre) => (
-            <li key={genre}>{genre}</li>
-          ))}
-        </ul>
-      </div>
-      <div>
-        <h2>Popularity</h2>
-        <p>{artist.popularity}</p>
+        <div className={classes.text}>
+          <h1>{artist.name}</h1>
+          <div className={classes.artistGenres}>
+            <ul>
+              {artist.genres.map((genre) => (
+                <li key={genre}>{stringUtils.capitalizeWords(genre)}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3>Popularity</h3>
+            <p>{artist.popularity}</p>
+          </div>
+
+          <div>
+            <h3>Followers</h3>
+            <p>{stringUtils.formatNumber(artist.followers.total)}</p>
+          </div>
+        </div>
       </div>
 
-      <div>
-        <h2>Followers</h2>
-        <p>{artist.followers.total}</p>
-      </div>
+      <ArtistAlbums id={id} />
     </div>
   );
 };

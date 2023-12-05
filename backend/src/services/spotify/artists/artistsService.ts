@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { Album, Artist, RequestOptions } from '@spotify-dash/types';
+import { StringUtils } from '../../../utils';
 
 /**
  * Fetches the user's top artists from Spotify.
@@ -41,16 +42,17 @@ export const fetchArtist = async (
 
 export const fetchArtistAlbums = async (
   accessToken: string,
-  id: string
+  id: string,
+  options?: RequestOptions
 ): Promise<Album[]> => {
-  const { data } = await axios.get(
-    `https://api.spotify.com/v1/artists/${id}/albums`,
-    {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    }
-  );
+  const query = StringUtils.buildQueryString(options || {});
+  const url = `https://api.spotify.com/v1/artists/${id}/albums${query}`;
 
-  return data;
+  const { data } = await axios.get(url, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+
+  return data.items;
 };

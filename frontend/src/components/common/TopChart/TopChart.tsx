@@ -20,7 +20,7 @@ export const TopChart: React.FC<TopChartProps> = ({ type }) => {
     data: items,
     loading,
     error,
-    fetchAll: fetchData,
+    fetchData,
   } = useApiResource<Track[] | Artist[]>(endpoint);
 
   useEffect(() => {

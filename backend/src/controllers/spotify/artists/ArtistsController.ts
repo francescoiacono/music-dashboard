@@ -67,6 +67,13 @@ class ArtistsController {
     try {
       const { id } = req.params;
       const { accessToken } = req.session;
+      const { limit, offset, time_range } = req.query;
+
+      const options = {
+        limit: limit ? Number(limit) : 20,
+        offset: offset ? Number(offset) : 0,
+        time_range: time_range ? String(time_range) : 'medium_term',
+      };
 
       if (!id) {
         throw new Error('No artist ID provided.');
@@ -74,7 +81,8 @@ class ArtistsController {
 
       const albums = await ArtistsService.fetchArtistAlbums(
         accessToken,
-        id as string
+        id as string,
+        options
       );
       res.status(200).json(albums);
     } catch (error) {

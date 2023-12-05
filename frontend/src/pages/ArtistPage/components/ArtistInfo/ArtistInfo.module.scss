@@ -1,0 +1,37 @@
+$image-size: 150px;
+$border-radius: 18px;
+
+.wrapper {
+}
+
+.artistInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  & > .text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  & > img {
+    width: $image-size;
+    height: $image-size;
+    border-radius: $border-radius;
+  }
+}
+
+.artistGenres {
+  & > ul {
+    list-style-type: none;
+
+    & > li {
+      display: inline-block;
+      margin-right: 10px;
+      font-size: 14px;
+      color: #999;
+    }
+  }
+}

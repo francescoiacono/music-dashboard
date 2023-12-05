@@ -5,6 +5,8 @@ import { useApiResource } from '../../../../hooks';
 import { stringUtils } from '../../../../utils';
 import classes from './ArtistInfo.module.scss';
 import { ColorBar } from '../../../../components/common';
+import { ArtistTopTracks } from './ArtistTopTracks/ArtistTopTracks';
+import { RelatedArtists } from './RelatedArtists/RelatedArtists';
 
 interface ArtistInfoProps {
   id: string;
@@ -20,7 +22,7 @@ export const ArtistInfo: React.FC<ArtistInfoProps> = ({ id }) => {
 
   useEffect(() => {
     fetchArtist();
-  }, []);
+  }, [id]);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
@@ -52,6 +54,8 @@ export const ArtistInfo: React.FC<ArtistInfoProps> = ({ id }) => {
       </div>
 
       <ArtistAlbums id={id} />
+      <ArtistTopTracks id={id} />
+      <RelatedArtists id={id} />
     </div>
   );
 };

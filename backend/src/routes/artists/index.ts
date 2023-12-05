@@ -15,4 +15,10 @@ routes.get(
   ArtistsController.getArtist
 );
 
+routes.get(
+  '/:id/albums',
+  SpotifyAuthController.checkAccessToken,
+  ArtistsController.getArtistAlbums
+);
+
 export { routes };

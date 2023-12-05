@@ -14,7 +14,7 @@ export const ChartItem: React.FC<ChartItemProps> = ({ item }) => {
   if (typeof item === 'object' && 'album' in item) {
     imageUrl = item.album.images[0].url;
     name = `${item.name} - ${item.artists[0].name}`;
-    itemUrl = `#`;
+    itemUrl = `/artist/${item.artists[0].id}`;
   } else {
     imageUrl = item.images[0].url;
     name = item.name;

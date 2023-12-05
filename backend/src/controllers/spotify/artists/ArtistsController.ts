@@ -140,6 +140,30 @@ class ArtistsController {
       next(error);
     }
   };
+
+  getRelatedArtists = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    try {
+      const { id } = req.params;
+      const { accessToken } = req.session;
+
+      if (!id) {
+        throw new Error('No artist ID provided.');
+      }
+
+      const relatedArtists = await ArtistsService.fetchRelatedArtists(
+        accessToken,
+        id as string
+      );
+
+      res.status(200).json(relatedArtists);
+    } catch (error) {
+      next(error);
+    }
+  };
 }
 
 export default new ArtistsController();

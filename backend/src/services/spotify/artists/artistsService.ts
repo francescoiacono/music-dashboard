@@ -73,3 +73,18 @@ export const fetchArtistTopTracks = async (
 
   return data.tracks;
 };
+
+export const fetchRelatedArtists = async (
+  accessToken: string,
+  id: string
+): Promise<Artist[]> => {
+  const url = `https://api.spotify.com/v1/artists/${id}/related-artists`;
+
+  const { data } = await axios.get(url, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+
+  return data.artists;
+};

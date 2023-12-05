@@ -27,4 +27,10 @@ routes.get(
   ArtistsController.getArtistTopTracks
 );
 
+routes.get(
+  '/:id/related-artists',
+  SpotifyAuthController.checkAccessToken,
+  ArtistsController.getRelatedArtists
+);
+
 export { routes };

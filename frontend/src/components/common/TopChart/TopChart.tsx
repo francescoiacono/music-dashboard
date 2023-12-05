@@ -1,18 +1,19 @@
 import { Artist, RequestOptions, Track } from '@spotify-dash/types';
 import { useApiResource } from '../../../hooks';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { ChartItem } from './ChartItem/ChartItem';
+import { OptionSetter } from './OptionSetter/OptionSetter';
 
 interface TopChartProps {
   type: 'tracks' | 'artists';
 }
 
 export const TopChart: React.FC<TopChartProps> = ({ type }) => {
-  const options: RequestOptions = {
+  const [options, setOptions] = useState<RequestOptions>({
     limit: 10,
     time_range: 'long_term',
     offset: 0,
-  };
+  });
 
   const endpoint = type === 'tracks' ? '/tracks/top' : '/artists/top';
 
@@ -25,18 +26,21 @@ export const TopChart: React.FC<TopChartProps> = ({ type }) => {
 
   useEffect(() => {
     fetchData(options);
-  }, []);
+  }, [options]);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
   if (!items) return <div>No {type}</div>;
 
   return (
-    <ol>
-      {items.length > 0 &&
-        items.map((item: Track | Artist) => (
-          <ChartItem key={item.id} item={item} />
-        ))}
-    </ol>
+    <>
+      <OptionSetter options={options} setOptions={setOptions} />
+      <ol>
+        {items.length > 0 &&
+          items.map((item: Track | Artist) => (
+            <ChartItem key={item.id} item={item} />
+          ))}
+      </ol>
+    </>
   );
 };

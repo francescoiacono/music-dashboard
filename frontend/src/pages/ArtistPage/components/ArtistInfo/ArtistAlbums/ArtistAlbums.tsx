@@ -17,7 +17,7 @@ export const ArtistAlbums: React.FC<ArtistAlbumsProps> = ({ id }) => {
   } = useApiResource<Album[]>(`/artists/${id}/albums`);
 
   useEffect(() => {
-    fetchAlbums({ limit: 5 } as RequestOptions);
+    fetchAlbums({ limit: 4 } as RequestOptions);
   }, []);
 
   if (loading) return <div>Loading...</div>;

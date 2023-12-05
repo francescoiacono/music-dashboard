@@ -1,6 +1,6 @@
-import { Request, Response, NextFunction } from "express";
-import { ArtistsService } from "../../../services";
-import { Artist } from "@spotify-dash/types";
+import { Request, Response, NextFunction } from 'express';
+import { ArtistsService } from '../../../services';
+import { Artist } from '@spotify-dash/types';
 
 /**
  * ArtistsController class handles the logic for the "/artists"SS route.
@@ -30,7 +30,7 @@ class ArtistsController {
       const options = {
         limit: limit ? Number(limit) : 20,
         offset: offset ? Number(offset) : 0,
-        time_range: time_range ? String(time_range) : "medium_term",
+        time_range: time_range ? String(time_range) : 'medium_term',
       };
 
       const { accessToken } = req.session;
@@ -39,6 +39,25 @@ class ArtistsController {
         options
       );
       res.status(200).json(artists);
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  getArtist = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { id } = req.params;
+      const { accessToken } = req.session;
+
+      if (!id) {
+        throw new Error('No artist ID provided.');
+      }
+
+      const artist: Artist = await ArtistsService.fetchArtist(
+        accessToken,
+        id as string
+      );
+      res.status(200).json(artist);
     } catch (error) {
       next(error);
     }

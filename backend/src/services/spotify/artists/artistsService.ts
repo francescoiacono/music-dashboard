@@ -1,5 +1,5 @@
-import axios from "axios";
-import { Artist, RequestOptions } from "@spotify-dash/types";
+import axios from 'axios';
+import { Artist, RequestOptions } from '@spotify-dash/types';
 
 /**
  * Fetches the user's top artists from Spotify.
@@ -24,4 +24,17 @@ export const fetchTopArtists = async (
   );
 
   return data.items;
+};
+
+export const fetchArtist = async (
+  accessToken: string,
+  id: string
+): Promise<Artist> => {
+  const { data } = await axios.get(`https://api.spotify.com/v1/artists/${id}`, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+
+  return data;
 };

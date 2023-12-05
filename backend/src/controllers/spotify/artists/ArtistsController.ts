@@ -44,6 +44,15 @@ class ArtistsController {
     }
   };
 
+  /**
+   * Fetches an artist from Spotify.
+   *
+   * @param {Request} req - The Express request object.
+   * @param {Response} res - The Express response object.
+   * @param {NextFunction} next - The Express next function.
+   *
+   */
+
   getArtist = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { id } = req.params;
@@ -62,6 +71,15 @@ class ArtistsController {
       next(error);
     }
   };
+
+  /**
+   * Fetches an artist's albums from Spotify.
+   *
+   * @param {Request} req - The Express request object.
+   * @param {Response} res - The Express response object.
+   * @param {NextFunction} next - The Express next function.
+   *
+   */
 
   getArtistAlbums = async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -85,6 +103,39 @@ class ArtistsController {
         options
       );
       res.status(200).json(albums);
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  /**
+   * Fetches an artist's top tracks from Spotify.
+   *
+   * @param {Request} req - The Express request object.
+   * @param {Response} res - The Express response object.
+   * @param {NextFunction} next - The Express next function.
+   *
+   */
+
+  getArtistTopTracks = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    try {
+      const { id } = req.params;
+      const { accessToken } = req.session;
+
+      if (!id) {
+        throw new Error('No artist ID provided.');
+      }
+
+      const topTracks = await ArtistsService.fetchArtistTopTracks(
+        accessToken,
+        id as string
+      );
+
+      res.status(200).json(topTracks);
     } catch (error) {
       next(error);
     }

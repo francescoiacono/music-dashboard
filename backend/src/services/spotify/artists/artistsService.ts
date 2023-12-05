@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Album, Artist, RequestOptions } from '@spotify-dash/types';
+import { Album, Artist, RequestOptions, Track } from '@spotify-dash/types';
 import { StringUtils } from '../../../utils';
 
 /**
@@ -55,4 +55,21 @@ export const fetchArtistAlbums = async (
   });
 
   return data.items;
+};
+
+export const fetchArtistTopTracks = async (
+  accessToken: string,
+  id: string
+): Promise<Track[]> => {
+  const url = `https://api.spotify.com/v1/artists/${id}/top-tracks?country=US`;
+
+  const { data } = await axios.get(url, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+
+  console.log('data', data);
+
+  return data.tracks;
 };

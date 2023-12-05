@@ -1,12 +1,13 @@
-import classes from "./LoginButton.module.scss";
+import { Link } from 'react-router-dom';
+import classes from './LoginButton.module.scss';
 
 export const LoginButton = () => {
   return (
-    <a
+    <Link
       className={classes.loginButton}
-      href="http://localhost:8000/api/auth/login"
+      to='http://localhost:8000/api/auth/login'
     >
       Login to Spotify
-    </a>
+    </Link>
   );
 };

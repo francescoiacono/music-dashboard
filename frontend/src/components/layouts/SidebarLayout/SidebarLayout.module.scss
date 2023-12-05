@@ -1,9 +1,10 @@
 .wrapper {
-    display: flex;
+  display: flex;
 }
 
-.wrapper > main {    
-    margin-left: var(--sidebar-width); 
-    flex-grow: 1; 
-    padding: 20px;
+.wrapper > main {
+  margin-left: var(--sidebar-width);
+  flex-grow: 1;
+  padding: 20px;
+  height: calc(100vh - 40px);
 }

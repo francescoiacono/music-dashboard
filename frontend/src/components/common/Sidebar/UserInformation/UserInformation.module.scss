@@ -2,40 +2,37 @@ $avatar-size: 70px;
 $border-radius: 18px;
 
 .wrapper {
-    width: 100%;
+  width: 100%;
 }
 
 .info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0;
 
-    gap: .5rem;
+  gap: 0.5rem;
 
-    & > img {
-        width: $avatar-size;
-        height: $avatar-size;
-        border-radius: $border-radius;
-        object-fit: cover;
-
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    }
+  & > img {
+    width: $avatar-size;
+    height: $avatar-size;
+    border-radius: $border-radius;
+    object-fit: cover;
+  }
 }
 
 .text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-    & > h3 {
-        font-size: 1.2rem;
-        font-weight: 500;
-    }
+  & > h3 {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
 
-    & > p {
-        font-size: 0.8rem;
-        font-weight: 300;
-    }
-
+  & > p {
+    font-size: 0.8rem;
+    font-weight: 300;
+  }
 }

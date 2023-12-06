@@ -1,0 +1,40 @@
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+
+  & > p {
+    display: none;
+  }
+
+  & > img {
+    width: 140px;
+    height: 140px;
+    border-radius: 18px;
+    object-fit: cover;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+    & > p {
+      display: block;
+      color: white;
+      position: absolute;
+      text-align: center;
+      font-weight: bold;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

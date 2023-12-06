@@ -51,3 +51,10 @@ $border-radius: 18px;
   text-decoration: none;
   color: inherit;
 }
+
+@media (max-width: 768px) {
+  .wrapper {
+    width: 100%;
+    margin: 1rem 0;
+  }
+}

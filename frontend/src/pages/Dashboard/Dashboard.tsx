@@ -1,10 +1,11 @@
-import { SidebarLayout } from '../../components/layouts';
+import { SidebarLayout } from "../../components/layouts";
+import { Folders } from "./components/Folders/Folders";
 
 export const Dashboard = () => {
   return (
     <SidebarLayout>
       <h1>Dashboard</h1>
-      <p>This is the dashboard page.</p>
+      <Folders />
     </SidebarLayout>
   );
 };

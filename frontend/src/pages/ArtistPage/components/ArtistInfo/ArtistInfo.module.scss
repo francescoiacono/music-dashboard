@@ -5,3 +5,9 @@
   gap: 2rem;
   margin-bottom: 1rem;
 }
+
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+  }
+}

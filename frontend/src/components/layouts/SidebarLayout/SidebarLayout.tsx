@@ -17,13 +17,7 @@ export const SidebarLayout: React.FC<SidebarLayoutProps> = ({ children }) => {
           <main>{children}</main>
         </>
       ) : (
-        <main
-          style={{
-            margin: "0",
-            height: "100vh",
-            background: "radial-gradient(circle, #1db954, #191414)",
-          }}
-        >
+        <main className={classes.noAuthWrapper}>
           <LoginBubble />
         </main>
       )}

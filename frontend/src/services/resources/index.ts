@@ -17,8 +17,6 @@ export const fetchResource = async <T>(
   const queryString = buildQueryString(options || {});
   const updatedUrl = `${url}${queryString}`;
 
-  console.log('updatedUrl', updatedUrl);
-
   const response = await apiFetch(updatedUrl, {
     method: 'GET',
     credentials: 'include',

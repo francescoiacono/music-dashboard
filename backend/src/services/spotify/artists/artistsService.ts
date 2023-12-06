@@ -69,8 +69,6 @@ export const fetchArtistTopTracks = async (
     },
   });
 
-  console.log('data', data);
-
   return data.tracks;
 };
 

@@ -15,10 +15,11 @@
   border-radius: 8px;
   background: linear-gradient(to right, red, green);
   transition: width 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
 
   & > p {
     position: absolute;
-    top: 1.5px;
     left: 40%;
     font-weight: bold;
     font-size: 0.9rem;

@@ -1,61 +1,22 @@
-import { useEffect } from 'react';
-import { Artist } from '@spotify-dash/types';
 import { ArtistAlbums } from './ArtistAlbums/ArtistAlbums';
-import { useApiResource } from '../../../../hooks';
-import { stringUtils } from '../../../../utils';
-import classes from './ArtistInfo.module.scss';
-import { ColorBar } from '../../../../components/common';
 import { ArtistTopTracks } from './ArtistTopTracks/ArtistTopTracks';
 import { RelatedArtists } from './RelatedArtists/RelatedArtists';
+import { ArtistGenerics } from './ArtistGenerics/ArtistGenerics';
+import { useParams } from 'react-router-dom';
 
-interface ArtistInfoProps {
-  id: string;
-}
+export const ArtistInfo = () => {
+  const { id } = useParams();
 
-export const ArtistInfo: React.FC<ArtistInfoProps> = ({ id }) => {
-  const {
-    data: artist,
-    loading,
-    error,
-    fetchData: fetchArtist,
-  } = useApiResource<Artist>(`/artists/${id}`);
-
-  useEffect(() => {
-    fetchArtist();
-  }, [id]);
-
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
-  if (!artist) return <div>No artist</div>;
+  if (!id) {
+    return <div>Artist ID not found</div>;
+  }
 
   return (
-    <div className={classes.wrapper}>
-      <div className={classes.artistInfo}>
-        <img src={artist.images[0].url} alt={artist.name} />
-        <div className={classes.text}>
-          <h1>{artist.name}</h1>
-          <div className={classes.artistGenres}>
-            <ul>
-              {artist.genres.map((genre) => (
-                <li key={genre}>{stringUtils.capitalizeWords(genre)}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h3>Popularity</h3>
-            <ColorBar value={artist.popularity} />
-          </div>
-
-          <div>
-            <h3>Followers</h3>
-            <p>{stringUtils.formatNumber(artist.followers.total)}</p>
-          </div>
-        </div>
-      </div>
-
-      <ArtistAlbums id={id} />
+    <>
+      <ArtistGenerics id={id} />
       <ArtistTopTracks id={id} />
+      <ArtistAlbums id={id} />
       <RelatedArtists id={id} />
-    </div>
+    </>
   );
 };

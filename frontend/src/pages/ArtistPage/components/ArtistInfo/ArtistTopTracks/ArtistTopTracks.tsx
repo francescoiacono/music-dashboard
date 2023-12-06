@@ -1,6 +1,7 @@
 import { Track } from '@spotify-dash/types';
 import { useApiResource } from '../../../../../hooks';
 import { useEffect } from 'react';
+import { TopTrackItem } from './TopTrackItem/TopTrackItem';
 
 interface ArtistTopTracksProps {
   id: string;
@@ -26,10 +27,8 @@ export const ArtistTopTracks: React.FC<ArtistTopTracksProps> = ({ id }) => {
     <div>
       <h2>Top Tracks</h2>
       <ul>
-        {tracks.map((track) => (
-          <li key={track.id}>
-            {track.name} - {track.album.name}
-          </li>
+        {tracks.slice(0, 5).map((track) => (
+          <TopTrackItem key={track.id} track={track} />
         ))}
       </ul>
     </div>

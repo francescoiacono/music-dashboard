@@ -1,7 +1,8 @@
-import { Track } from '@spotify-dash/types';
-import { useApiResource } from '../../../../../hooks';
-import { useEffect } from 'react';
-import { TopTrackItem } from './TopTrackItem/TopTrackItem';
+import { Track } from "@spotify-dash/types";
+import { useApiResource } from "../../../../../hooks";
+import { useEffect } from "react";
+import { TopTrackItem } from "./TopTrackItem/TopTrackItem";
+import classes from "./ArtistTopTracks.module.scss";
 
 interface ArtistTopTracksProps {
   id: string;
@@ -24,7 +25,7 @@ export const ArtistTopTracks: React.FC<ArtistTopTracksProps> = ({ id }) => {
   if (!tracks) return <div>No tracks</div>;
 
   return (
-    <div>
+    <div className={classes.wrapper}>
       <h2>Top Tracks</h2>
       <ul>
         {tracks.slice(0, 5).map((track) => (

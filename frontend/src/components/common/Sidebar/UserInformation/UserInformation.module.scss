@@ -1,5 +1,5 @@
-$avatar-size: 70px;
-$border-radius: 18px;
+$avatar-size: 50px;
+$border-radius: 100%;
 
 .wrapper {
   width: 100%;
@@ -7,11 +7,10 @@ $border-radius: 18px;
 
 .info {
   display: flex;
-  flex-direction: column;
   align-items: center;
   padding: 1rem 0;
 
-  gap: 0.5rem;
+  gap: 1rem;
 
   & > img {
     width: $avatar-size;
@@ -22,17 +21,9 @@ $border-radius: 18px;
 }
 
 .text {
+  padding-top: .2rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
 
-  & > h3 {
-    font-size: 1.2rem;
-    font-weight: 500;
-  }
-
-  & > p {
-    font-size: 0.8rem;
-    font-weight: 300;
-  }
 }

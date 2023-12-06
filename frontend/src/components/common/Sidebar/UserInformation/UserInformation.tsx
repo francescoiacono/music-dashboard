@@ -14,8 +14,7 @@ export const UserInformation: React.FC<UserInformationProps> = ({
       <div className={classes.info}>
         <img src={profile.images[1].url} alt="User avatar" />
         <div className={classes.text}>
-          <h3>Welcome, {profile.display_name}!</h3>
-          <p>{profile.email}</p>
+          <p>Hello, {profile.display_name}!</p>
           <LogoutButton />
         </div>
       </div>

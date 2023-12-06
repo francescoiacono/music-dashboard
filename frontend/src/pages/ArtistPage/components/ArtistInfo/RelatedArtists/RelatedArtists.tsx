@@ -1,7 +1,8 @@
-import { Artist } from '@spotify-dash/types';
-import { useApiResource } from '../../../../../hooks';
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Artist } from "@spotify-dash/types";
+import { useApiResource } from "../../../../../hooks";
+import { useEffect } from "react";
+import { RelatedArtistsItem } from "./RelatedArtistsItem/RelatedArtistsItem";
+import classes from "./RelatedArtists.module.scss";
 
 interface RelatedArtistsProps {
   id: string;
@@ -24,13 +25,11 @@ export const RelatedArtists: React.FC<RelatedArtistsProps> = ({ id }) => {
   if (!artists) return <div>No artists</div>;
 
   return (
-    <div>
+    <div className={classes.wrapper}>
       <h2>Related Artists</h2>
-      <ul>
-        {artists.map((artist) => (
-          <li key={artist.id}>
-            <Link to={`/artist/${artist.id}`}>{artist.name}</Link>
-          </li>
+      <ul className={classes.relatedArtists}>
+        {artists.slice(0, 6).map((artist) => (
+          <RelatedArtistsItem key={artist.id} artist={artist} />
         ))}
       </ul>
     </div>

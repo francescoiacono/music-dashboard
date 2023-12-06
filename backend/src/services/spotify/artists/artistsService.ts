@@ -1,6 +1,6 @@
-import axios from 'axios';
-import { Album, Artist, RequestOptions, Track } from '@spotify-dash/types';
-import { StringUtils } from '../../../utils';
+import axios from "axios";
+import { Album, Artist, RequestOptions, Track } from "@spotify-dash/types";
+import { StringUtils } from "../../../utils";
 
 /**
  * Fetches the user's top artists from Spotify.

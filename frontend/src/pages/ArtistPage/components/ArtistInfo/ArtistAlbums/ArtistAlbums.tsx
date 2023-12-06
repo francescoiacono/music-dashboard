@@ -1,8 +1,8 @@
-import { Album, RequestOptions } from '@spotify-dash/types';
-import { useApiResource } from '../../../../../hooks';
-import { useEffect } from 'react';
-import { AlbumItem } from './AlbumItem/AlbumItem';
-import classes from './ArtistAlbums.module.scss';
+import { Album, RequestOptions } from "@spotify-dash/types";
+import { useApiResource } from "../../../../../hooks";
+import { useEffect } from "react";
+import { AlbumItem } from "./AlbumItem/AlbumItem";
+import classes from "./ArtistAlbums.module.scss";
 
 interface ArtistAlbumsProps {
   id: string;
@@ -17,7 +17,7 @@ export const ArtistAlbums: React.FC<ArtistAlbumsProps> = ({ id }) => {
   } = useApiResource<Album[]>(`/artists/${id}/albums`);
 
   useEffect(() => {
-    fetchAlbums({ limit: 4 } as RequestOptions);
+    fetchAlbums({ limit: 10, include_groups: "album" } as RequestOptions);
   }, [id]);
 
   if (loading) return <div>Loading...</div>;

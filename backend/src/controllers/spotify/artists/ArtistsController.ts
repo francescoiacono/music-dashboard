@@ -1,6 +1,6 @@
-import { Request, Response, NextFunction } from 'express';
-import { ArtistsService } from '../../../services';
-import { Artist } from '@spotify-dash/types';
+import { Request, Response, NextFunction } from "express";
+import { ArtistsService } from "../../../services";
+import { Artist, RequestOptions } from "@spotify-dash/types";
 
 /**
  * ArtistsController class handles the logic for the "/artists"SS route.
@@ -30,7 +30,7 @@ class ArtistsController {
       const options = {
         limit: limit ? Number(limit) : 20,
         offset: offset ? Number(offset) : 0,
-        time_range: time_range ? String(time_range) : 'medium_term',
+        time_range: time_range ? String(time_range) : "medium_term",
       };
 
       const { accessToken } = req.session;
@@ -59,7 +59,7 @@ class ArtistsController {
       const { accessToken } = req.session;
 
       if (!id) {
-        throw new Error('No artist ID provided.');
+        throw new Error("No artist ID provided.");
       }
 
       const artist: Artist = await ArtistsService.fetchArtist(
@@ -85,16 +85,15 @@ class ArtistsController {
     try {
       const { id } = req.params;
       const { accessToken } = req.session;
-      const { limit, offset, time_range } = req.query;
+      const { limit, include_groups } = req.query;
 
-      const options = {
+      const options: RequestOptions = {
+        include_groups: include_groups ? String(include_groups) : "album",
         limit: limit ? Number(limit) : 20,
-        offset: offset ? Number(offset) : 0,
-        time_range: time_range ? String(time_range) : 'medium_term',
       };
 
       if (!id) {
-        throw new Error('No artist ID provided.');
+        throw new Error("No artist ID provided.");
       }
 
       const albums = await ArtistsService.fetchArtistAlbums(
@@ -127,7 +126,7 @@ class ArtistsController {
       const { accessToken } = req.session;
 
       if (!id) {
-        throw new Error('No artist ID provided.');
+        throw new Error("No artist ID provided.");
       }
 
       const topTracks = await ArtistsService.fetchArtistTopTracks(
@@ -151,7 +150,7 @@ class ArtistsController {
       const { accessToken } = req.session;
 
       if (!id) {
-        throw new Error('No artist ID provided.');
+        throw new Error("No artist ID provided.");
       }
 
       const relatedArtists = await ArtistsService.fetchRelatedArtists(

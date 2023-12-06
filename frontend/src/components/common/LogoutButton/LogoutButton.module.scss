@@ -1,17 +1,17 @@
 .logoutButton {
-    border: 2px solid #000;
-    border-radius: 8px;
-    text-transform: uppercase;
-    color: #000;
-    margin: .5rem 0;
-    font-weight: 700;
-    text-decoration: none;
-    transition: all 0.3s ease-in-out;
-    font-size: .7rem;
-    padding: 0.1rem .3rem;
-    width: fit-content;
-    &:hover {
-        background-color: #000;
-        color: #fff;
-    }
+  border: 2px solid #000;
+  border-radius: 8px;
+  text-transform: uppercase;
+  color: #000;
+  margin: 0.5rem 0;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  font-size: 0.7rem;
+  padding: 0.1rem 0.3rem;
+  width: fit-content;
+  &:hover {
+    background-color: #000;
+    color: #fff;
+  }
 }

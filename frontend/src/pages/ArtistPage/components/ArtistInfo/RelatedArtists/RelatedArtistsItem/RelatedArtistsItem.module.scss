@@ -10,7 +10,7 @@
   list-style-type: none;
 
   border-radius: 18px;
-  background-color: #f3f3f3;
+  background-color: var(--primary-color);
 
   padding: 1rem;
 
@@ -19,7 +19,7 @@
   transition: all 0.2s ease-in-out;
 
   &:hover {
-    box-shadow: 0 0 0 2px #f3f3f3;
+    box-shadow: var(--default-shadow);
     transform: scale(1.05);
   }
 

@@ -3,6 +3,7 @@ import { ArtistTopTracks } from "./ArtistTopTracks/ArtistTopTracks";
 import { RelatedArtists } from "./RelatedArtists/RelatedArtists";
 import { ArtistGenerics } from "./ArtistGenerics/ArtistGenerics";
 import { useParams } from "react-router-dom";
+import classes from "./ArtistInfo.module.scss";
 
 export const ArtistInfo = () => {
   const { id } = useParams();
@@ -14,7 +15,7 @@ export const ArtistInfo = () => {
   return (
     <>
       <ArtistGenerics id={id} />
-      <div style={{ display: "flex", gap: "2rem" }}>
+      <div className={classes.row}>
         <ArtistTopTracks id={id} />
         <RelatedArtists id={id} />
       </div>

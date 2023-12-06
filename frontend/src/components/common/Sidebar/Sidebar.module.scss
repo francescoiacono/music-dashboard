@@ -1,12 +1,21 @@
 $sidebar-width: var(--sidebar-width);
 $sidebar-height: 100vh;
-$sidebar-bg-color: #f1f1f1;
+$sidebar-bg-color: var(--primary-color);
 
 .wrapper {
-    width: $sidebar-width;
-    height: $sidebar-height;
-    position: fixed;
-    background-color: $sidebar-bg-color;
+  width: $sidebar-width;
+  height: $sidebar-height;
+  position: fixed;
+  background-color: $sidebar-bg-color;
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
 
-    padding: 2rem;
+  transition: all 0.3s ease-in-out;
+
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    transform: translateX(-100%);
+  }
 }

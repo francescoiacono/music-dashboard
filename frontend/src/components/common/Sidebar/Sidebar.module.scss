@@ -32,23 +32,23 @@ $sidebar-bg-color: var(--primary-color);
   transform: translateX(0);
 }
 
-.openButton {
-  width: 1.5rem;
-  position: fixed;
-  height: $sidebar-height;
-  background-color: $sidebar-bg-color;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.sidebarButton {
+  user-select: none;
+  border: none;
 
   &:hover {
     cursor: pointer;
+    background: none;
   }
-}
 
-.closeButton {
-  &:hover {
-    cursor: pointer;
+  &.long {
+    width: 1.5rem;
+    position: fixed;
+    height: $sidebar-height;
+    background-color: $sidebar-bg-color;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

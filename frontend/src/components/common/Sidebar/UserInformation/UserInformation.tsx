@@ -1,20 +1,20 @@
-import { UserProfile } from "@spotify-dash/types";
 import { LogoutButton } from "../..";
+import { useAuth } from "../../../../providers";
 import classes from "./UserInformation.module.scss";
 
-interface UserInformationProps {
-  profile: UserProfile;
-}
+export const UserInformation = ({}) => {
+  const { user } = useAuth();
 
-export const UserInformation: React.FC<UserInformationProps> = ({
-  profile,
-}) => {
+  if (!user) {
+    return null;
+  }
+
   return (
     <div className={classes.wrapper}>
       <div className={classes.info}>
-        <img src={profile.images[1].url} alt="User avatar" />
+        <img src={user.images[1].url} alt="User avatar" />
         <div className={classes.text}>
-          <p>Hello, {profile.display_name}!</p>
+          <p>Hello, {user.display_name}!</p>
           <LogoutButton />
         </div>
       </div>

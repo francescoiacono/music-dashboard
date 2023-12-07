@@ -1,8 +1,8 @@
 import { memo, useMemo } from "react";
-import { useAuth, useSidebar } from "../../../providers";
+import { useSidebar } from "../../../providers";
 import { UserInformation } from "./UserInformation";
-import { LoginButton } from "../LoginButton/LoginButton";
 import { NavigationLinks } from "./NavigationLinks/NavigationLinks";
+import { IconButton } from "../IconButton/IconButton";
 import classes from "./Sidebar.module.scss";
 
 /**
@@ -13,7 +13,6 @@ import classes from "./Sidebar.module.scss";
  */
 
 export const Sidebar = memo(() => {
-  const { user } = useAuth();
   const { isOpen, toggleSidebar, isLargeScreen } = useSidebar();
 
   /**
@@ -32,22 +31,19 @@ export const Sidebar = memo(() => {
   return (
     <>
       {!isOpen && (
-        <span
+        <IconButton
           onClick={toggleSidebar}
-          className={`material-symbols-outlined ${classes.openButton}`}
-        >
-          chevron_right
-        </span>
+          className={`${classes.sidebarButton} ${classes.long}`}
+          iconName="chevron_right"
+        />
       )}
       <aside className={sidebarClass}>
-        <span
-          className={`material-symbols-outlined ${classes.closeButton}`}
+        <IconButton
           onClick={toggleSidebar}
-        >
-          chevron_left
-        </span>
-
-        {user ? <UserInformation profile={user} /> : <LoginButton />}
+          className={classes.sidebarButton}
+          iconName="chevron_left"
+        />
+        <UserInformation />
         <NavigationLinks />
       </aside>
     </>

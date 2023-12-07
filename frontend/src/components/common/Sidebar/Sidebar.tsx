@@ -39,7 +39,7 @@ export const Sidebar = memo(() => {
           <IconButton
             onClick={toggleSidebar}
             className={classes.sidebarButton}
-            iconName="chevron_left"
+            icon="chevron_left"
           />
         </div>
       </aside>

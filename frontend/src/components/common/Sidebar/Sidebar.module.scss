@@ -19,7 +19,7 @@ $transition-easing: ease-in-out;
 
 .wrapperLarge {
   @include sidebar-style;
-  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
   padding-left: 2rem;
   display: flex;
   justify-content: space-between;
@@ -59,7 +59,7 @@ $transition-easing: ease-in-out;
 .long {
   width: 20px;
   height: $sidebar-height;
-  margin-right: 1px;
+  margin-right: 0.5px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -67,6 +67,11 @@ $transition-easing: ease-in-out;
 
   &:hover {
     cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.05);
+
+    background: linear-gradient(
+      90deg,
+      var(--primary-color) 0%,
+      rgba(0, 0, 0, 0.1) 100%
+    );
   }
 }

@@ -15,9 +15,27 @@
     color: black;
     font-weight: 500;
     transition: all 0.2s ease-in-out;
-
-    &:hover {
-      text-decoration: underline;
-    }
   }
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  &:hover {
+    font-weight: bold;
+  }
+}
+
+.icon {
+  border: none;
+  font-size: 1.3rem;
+  &:hover {
+    background-color: transparent;
+    cursor: pointer;
+  }
+}
+
+.active {
+  font-weight: bold;
 }

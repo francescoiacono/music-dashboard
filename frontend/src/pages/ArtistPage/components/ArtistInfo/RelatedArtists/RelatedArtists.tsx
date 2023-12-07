@@ -18,7 +18,7 @@ export const RelatedArtists: React.FC<RelatedArtistsProps> = ({ id }) => {
 
   useEffect(() => {
     fetchRelatedArtists();
-  }, [id]);
+  }, [id, fetchRelatedArtists]);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;

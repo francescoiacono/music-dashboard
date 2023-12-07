@@ -18,7 +18,7 @@ export const ArtistAlbums: React.FC<ArtistAlbumsProps> = ({ id }) => {
 
   useEffect(() => {
     fetchAlbums({ limit: 10, include_groups: "album" } as RequestOptions);
-  }, [id]);
+  }, [id, fetchAlbums]);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;

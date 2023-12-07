@@ -1,9 +1,9 @@
-import { Artist } from '@spotify-dash/types';
-import { useEffect } from 'react';
-import { ColorBar } from '../../../../../components/common';
-import { useApiResource } from '../../../../../hooks';
-import { stringUtils } from '../../../../../utils';
-import classes from './ArtistGenerics.module.scss';
+import { Artist } from "@spotify-dash/types";
+import { useEffect } from "react";
+import { ColorBar } from "../../../../../components/common";
+import { useApiResource } from "../../../../../hooks";
+import { stringUtils } from "../../../../../utils";
+import classes from "./ArtistGenerics.module.scss";
 
 interface ArtistGenericsProps {
   id: string;
@@ -19,7 +19,7 @@ export const ArtistGenerics: React.FC<ArtistGenericsProps> = ({ id }) => {
 
   useEffect(() => {
     fetchArtist();
-  }, [id]);
+  }, [id, fetchArtist]);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;

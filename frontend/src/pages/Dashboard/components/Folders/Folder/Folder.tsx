@@ -19,7 +19,7 @@ export const Folder = ({ title, itemType }: FolderProps) => {
 
   useEffect(() => {
     fetchData({ limit: 4 });
-  }, []);
+  }, [fetchData]);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error</p>;

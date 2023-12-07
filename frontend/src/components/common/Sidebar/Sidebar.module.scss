@@ -36,12 +36,15 @@ $sidebar-bg-color: var(--primary-color);
   user-select: none;
   border: none;
 
+  transition: all 0.3s ease-in-out;
+
   &:hover {
     cursor: pointer;
     background: none;
   }
 
   &.long {
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
     width: 1.5rem;
     position: fixed;
     height: $sidebar-height;
@@ -50,5 +53,9 @@ $sidebar-bg-color: var(--primary-color);
     display: flex;
     justify-content: center;
     align-items: center;
+
+    &:hover {
+      width: 30px;
+    }
   }
 }

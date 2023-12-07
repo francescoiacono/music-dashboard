@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8000/api";
+import { BASE_URL } from "./config";
 
 /**
  * Custom fetch wrapper for the API

@@ -1,3 +1,6 @@
+$openMargin: var(--sidebar-width);
+$closedMargin: 20px;
+
 .wrapper {
   display: flex;
 }
@@ -8,16 +11,15 @@
   padding: 20px;
   height: calc(100vh - 40px);
   transition: all 0.3s ease-in-out;
+
+  &.closed {
+    margin-left: $closedMargin;
+    height: calc(100vh - 40px);
+  }
 }
 
 .noAuthWrapper {
   margin: 0 !important;
   height: 100vh !important;
   background: radial-gradient(circle, #1db954, #191414);
-}
-
-@media (max-width: 768px) {
-  .wrapper > main {
-    margin-left: 0;
-  }
 }

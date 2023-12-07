@@ -30,21 +30,18 @@ export const Sidebar = memo(() => {
 
   return (
     <>
-      {!isOpen && (
-        <IconButton
-          onClick={toggleSidebar}
-          className={`${classes.sidebarButton} ${classes.long}`}
-          iconName="chevron_right"
-        />
-      )}
       <aside className={sidebarClass}>
-        <IconButton
-          onClick={toggleSidebar}
-          className={classes.sidebarButton}
-          iconName="chevron_left"
-        />
-        <UserInformation />
-        <NavigationLinks />
+        <div>
+          <UserInformation />
+          <NavigationLinks />
+        </div>
+        <div className={classes.long}>
+          <IconButton
+            onClick={toggleSidebar}
+            className={classes.sidebarButton}
+            iconName="chevron_left"
+          />
+        </div>
       </aside>
     </>
   );

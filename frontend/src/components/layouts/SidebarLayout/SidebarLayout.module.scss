@@ -1,5 +1,5 @@
 $openMargin: var(--sidebar-width);
-$closedMargin: 20px;
+$closedMargin: var(--sidebar-width-closed);
 
 .wrapper {
   display: flex;

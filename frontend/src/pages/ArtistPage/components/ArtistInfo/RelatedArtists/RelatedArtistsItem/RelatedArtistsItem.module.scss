@@ -14,6 +14,7 @@
 
   padding: 1rem;
 
+  max-width: 150px;
   gap: 0.5rem;
 
   transition: all 0.2s ease-in-out;
@@ -28,6 +29,7 @@
     font-size: 0.9rem;
     font-weight: 600;
     text-align: center;
+    width: 100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

@@ -1,6 +1,6 @@
-import { RequestOptions } from '@spotify-dash/types';
-import apiFetch from '../../api';
-import { buildQueryString } from '../../utils/string';
+import { RequestOptions } from "@spotify-dash/types";
+import { buildQueryString } from "../../utils/string";
+import apiFetch from "../../api";
 
 /**
  * Fetches a resource from the API
@@ -18,10 +18,10 @@ export const fetchResource = async <T>(
   const updatedUrl = `${url}${queryString}`;
 
   const response = await apiFetch(updatedUrl, {
-    method: 'GET',
-    credentials: 'include',
+    method: "GET",
+    credentials: "include",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
   });
 

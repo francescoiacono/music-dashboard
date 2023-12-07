@@ -13,15 +13,10 @@ export const ArtistTopTracks: React.FC<ArtistTopTracksProps> = ({ id }) => {
     data: tracks,
     loading,
     error,
-    fetchData: fetchArtistTopTracks,
   } = useApiResource<Track[]>(`/artists/${id}/top-tracks`);
 
-  useEffect(() => {
-    fetchArtistTopTracks();
-  }, [id, fetchArtistTopTracks]);
-
   if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+  if (error) return <div>{error.message}</div>;
   if (!tracks) return <div>No tracks</div>;
 
   return (

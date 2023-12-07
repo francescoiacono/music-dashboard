@@ -13,16 +13,13 @@ interface FolderProps {
 }
 
 export const Folder = ({ title, itemType }: FolderProps) => {
-  const { data, loading, error, fetchData } = useApiResource<FolderDataType[]>(
-    `/${itemType}s/top`
+  const { data, loading, error } = useApiResource<FolderDataType[]>(
+    `/${itemType}s/top`,
+    { limit: 4 }
   );
 
-  useEffect(() => {
-    fetchData({ limit: 4 });
-  }, [fetchData]);
-
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error</p>;
+  if (error) return <p>{error.message}</p>;
   if (!data) return null;
 
   return (

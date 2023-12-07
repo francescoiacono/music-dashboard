@@ -13,15 +13,13 @@ export const ArtistAlbums: React.FC<ArtistAlbumsProps> = ({ id }) => {
     data: albums,
     loading,
     error,
-    fetchData: fetchAlbums,
-  } = useApiResource<Album[]>(`/artists/${id}/albums`);
-
-  useEffect(() => {
-    fetchAlbums({ limit: 10, include_groups: "album" } as RequestOptions);
-  }, [id, fetchAlbums]);
+  } = useApiResource<Album[]>(`/artists/${id}/albums`, {
+    limit: 10,
+    include_groups: "album",
+  } as RequestOptions);
 
   if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+  if (error) return <div>{error.message}</div>;
   if (!albums) return <div>No albums</div>;
 
   return (

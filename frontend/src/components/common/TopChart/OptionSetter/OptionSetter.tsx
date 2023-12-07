@@ -2,14 +2,17 @@ import React from "react";
 import classes from "./OptionSetter.module.scss";
 import { useTopChart } from "../../../../hooks";
 import { ChartTypes } from "../../../../types";
+import { RequestOptions } from "@spotify-dash/types";
 
 interface OptionSetterProps {
-  type: ChartTypes;
+  options: RequestOptions;
+  setOptions: (options: RequestOptions) => void;
 }
 
-export const OptionSetter: React.FC<OptionSetterProps> = ({ type }) => {
-  const { options, setOptions } = useTopChart(type);
-
+export const OptionSetter: React.FC<OptionSetterProps> = ({
+  options,
+  setOptions,
+}) => {
   return (
     <div className={classes.optionSetter}>
       <select

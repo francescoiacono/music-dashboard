@@ -1,31 +1,19 @@
 import { RequestOptions } from "@spotify-dash/types";
-import { useCallback, useState } from "react";
 import { resourcesService } from "../../services";
+import useSWR from "swr";
 
-export const useApiResource = <T>(url: string) => {
-  const [data, setData] = useState<T | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+const createFetcher = <T>(url: string, options?: RequestOptions) => {
+  return async (): Promise<T> => {
+    const response = await resourcesService.fetchResource<T>(url, options);
+    return response;
+  };
+};
 
-  /**
-   * Fetches data from the API and sets the state accordingly.
-   *
-   * @param options - Options to pass to the API call.
-   */
-  const fetchData = useCallback(
-    async (options?: RequestOptions) => {
-      setLoading(true);
-      try {
-        const response = await resourcesService.fetchResource<T>(url, options);
-        setData(response);
-      } catch (error) {
-        setError(error as Error["message"]);
-      } finally {
-        setLoading(false);
-      }
-    },
-    [url]
-  );
+export const useApiResource = <T>(url: string, options?: RequestOptions) => {
+  const fetcher = createFetcher<T>(url, options);
+  const serializedOptions = JSON.stringify(options);
+  const swrKey = [url, serializedOptions];
+  const { data, error } = useSWR<T, Error>(swrKey, fetcher);
 
-  return { data, loading, error, fetchData };
+  return { data, loading: !error && !data, error };
 };

@@ -13,15 +13,10 @@ export const RelatedArtists: React.FC<RelatedArtistsProps> = ({ id }) => {
     data: artists,
     loading,
     error,
-    fetchData: fetchRelatedArtists,
   } = useApiResource<Artist[]>(`/artists/${id}/related-artists`);
 
-  useEffect(() => {
-    fetchRelatedArtists();
-  }, [id, fetchRelatedArtists]);
-
   if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+  if (error) return <div>{error.message}</div>;
   if (!artists) return <div>No artists</div>;
 
   return (

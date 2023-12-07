@@ -9,15 +9,15 @@ interface TopChartProps {
 }
 
 export const TopChart: React.FC<TopChartProps> = ({ type }) => {
-  const { items, loading, error } = useTopChart(type);
+  const { items, loading, error, options, setOptions } = useTopChart(type);
 
   if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+  if (error) return <div>{error.message}</div>;
   if (!items) return <div>No {type}</div>;
 
   return (
     <>
-      <OptionSetter type={type} />
+      <OptionSetter options={options} setOptions={setOptions} />
       <ol>
         {items.length > 0 &&
           items.map((item: Track | Artist) => (

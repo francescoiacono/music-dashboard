@@ -14,15 +14,10 @@ export const ArtistGenerics: React.FC<ArtistGenericsProps> = ({ id }) => {
     data: artist,
     loading,
     error,
-    fetchData: fetchArtist,
   } = useApiResource<Artist>(`/artists/${id}`);
 
-  useEffect(() => {
-    fetchArtist();
-  }, [id, fetchArtist]);
-
   if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+  if (error) return <div>{error.message}</div>;
   if (!artist) return <div>No artist</div>;
 
   return (

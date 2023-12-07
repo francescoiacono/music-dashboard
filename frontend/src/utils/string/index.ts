@@ -5,16 +5,17 @@ export const buildQueryString = (params: Record<string, any>): string => {
       (key) => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`
     );
 
-  return queryStringParts.length > 0 ? `?${queryStringParts.join('&')}` : '';
+  const q = queryStringParts.length > 0 ? `?${queryStringParts.join("&")}` : "";
+  return q;
 };
 
 export const formatNumber = (num: number): string => {
   if (num >= 1000000000) {
-    return (num / 1000000000).toFixed(1) + 'B';
+    return (num / 1000000000).toFixed(1) + "B";
   } else if (num >= 1000000) {
-    return (num / 1000000).toFixed(1) + 'M';
+    return (num / 1000000).toFixed(1) + "M";
   } else if (num >= 1000) {
-    return (num / 1000).toFixed(0) + 'K';
+    return (num / 1000).toFixed(0) + "K";
   } else {
     return num.toString();
   }
@@ -23,9 +24,9 @@ export const formatNumber = (num: number): string => {
 export const capitalizeWords = (str: string): string => {
   if (!str) return str;
   return str
-    .split(' ')
+    .split(" ")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-    .join(' ');
+    .join(" ");
 };
 
 export const parseIsoDate = (isoDate: string) => {
@@ -42,7 +43,7 @@ export const formatDuration = (durationMs: number): string => {
   const minutes = Math.floor(totalSeconds / 60);
   const seconds = totalSeconds % 60;
 
-  return `${minutes.toString().padStart(2, '0')}:${seconds
+  return `${minutes.toString().padStart(2, "0")}:${seconds
     .toString()
-    .padStart(2, '0')}`;
+    .padStart(2, "0")}`;
 };

@@ -32,9 +32,7 @@ export const SidebarProvider = ({ children }: SidebarProviderProps) => {
     return () => window.removeEventListener("resize", handleResize);
   }, [handleResize]);
 
-  useEffect(() => {
-    console.log("isOpen", isOpen);
-  }, [isOpen]);
+  useEffect(() => {}, [isOpen]);
 
   const toggleSidebar = useCallback(() => {
     setIsOpen((prev) => !prev);

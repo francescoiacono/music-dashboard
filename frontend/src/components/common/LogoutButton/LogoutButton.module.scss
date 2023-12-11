@@ -1,8 +1,8 @@
 .logoutButton {
-  border: 2px solid #000;
+  border: 2px solid var(--primary-text-color);
   border-radius: 8px;
   text-transform: uppercase;
-  color: #000;
+  color: var(--primary-text-color);
   margin: 0.5rem 0;
   font-weight: 700;
   text-decoration: none;
@@ -11,7 +11,7 @@
   padding: 0.1rem 0.3rem;
   width: fit-content;
   &:hover {
-    background-color: #000;
+    background-color: var(--primary-text-color);
     color: #fff;
   }
 }

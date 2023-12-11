@@ -4,17 +4,22 @@
   --sidebar-width: 350px;
   --sidebar-width-closed: 25px;
   --primary-color: #eff0f4;
+  --secondary-color: #fff;
   --background-gradient: linear-gradient(
     0deg,
     var(--primary-color) 0%,
-    #fff 50%,
+    var(--secondary-color) 50%,
     var(--primary-color) 100%
   );
+
+  --primary-text-color: #191414;
+  --secondary-text-color: #999;
 
   --default-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
 }
 
 * {
+  color: var(--primary-text-color);
   box-sizing: border-box;
   margin: 0;
   padding: 0;

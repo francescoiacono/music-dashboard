@@ -10,7 +10,7 @@ export const RelatedArtistsItem: React.FC<RelatedArtistsItemProps> = ({
   artist,
 }) => {
   return (
-    <Link className={classes.link} to={"/artist/" + artist.id}>
+    <Link className={classes.link} to={"/artists/" + artist.id}>
       <li className={classes.item}>
         <img src={artist.images[0].url} alt={artist.name} />
         <p>{artist.name}</p>

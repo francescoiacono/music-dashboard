@@ -1,6 +1,6 @@
-import { Artist, Track } from '@spotify-dash/types';
-import { Link } from 'react-router-dom';
-import classes from './ChartItem.module.scss';
+import { Artist, Track } from "@spotify-dash/types";
+import { Link } from "react-router-dom";
+import classes from "./ChartItem.module.scss";
 
 interface ChartItemProps {
   item: Artist | Track;
@@ -11,14 +11,14 @@ export const ChartItem: React.FC<ChartItemProps> = ({ item }) => {
   let name: string;
   let itemUrl: string;
 
-  if (typeof item === 'object' && 'album' in item) {
+  if (typeof item === "object" && "album" in item) {
     imageUrl = item.album.images[0].url;
     name = `${item.name} - ${item.artists[0].name}`;
-    itemUrl = `/artist/${item.artists[0].id}`;
+    itemUrl = `/artists/${item.artists[0].id}`;
   } else {
     imageUrl = item.images[0].url;
     name = item.name;
-    itemUrl = `/artist/${item.id}`;
+    itemUrl = `/artists/${item.id}`;
   }
 
   return (

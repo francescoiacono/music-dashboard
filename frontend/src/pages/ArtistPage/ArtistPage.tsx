@@ -1,5 +1,5 @@
-import { SidebarLayout } from '../../components/layouts';
-import { ArtistInfo } from './components';
+import { SidebarLayout } from "../../components/layouts";
+import { ArtistInfo } from "./components";
 
 export const ArtistPage = () => {
   return (

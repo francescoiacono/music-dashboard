@@ -1,24 +1,43 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {
   ArtistPage,
   NotFoundPage,
   TopArtistsPage,
   TopTracksPage,
 } from "./pages";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Dashboard } from "./pages";
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Dashboard />,
+  },
+  {
+    path: "/top-artists",
+    element: <TopArtistsPage />,
+  },
+  {
+    path: "/top-tracks",
+    element: <TopTracksPage />,
+  },
+  {
+    path: "/artists/:id",
+    element: <ArtistPage />,
+    children: [
+      {
+        path: "related",
+        element: <p>Hello</p>,
+      },
+    ],
+  },
+  {
+    path: "*",
+    element: <NotFoundPage />,
+  },
+]);
+
 function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/top-artists" element={<TopArtistsPage />} />
-        <Route path="/top-tracks" element={<TopTracksPage />} />
-        <Route path="/artist/:id" element={<ArtistPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </Router>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
